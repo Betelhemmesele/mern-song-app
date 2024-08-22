@@ -1,8 +1,33 @@
-const Song = require('../model/song');
+
+const Song = require('../models/song');
+const multer = require('multer');
+const path = require('path');
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // Change 'uploads/' to your desired directory
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  }
+});
+
+const upload = multer({ storage });
+
+// Middleware to handle file uploads
+exports.uploadMusic = upload.single('musicFile');
 
 exports.createSong = async (req, res) => {
   try {
-    const song = new Song(req.body);
+    const fileUrl = req.file ? path.join('uploads', req.file.filename) : null;
+
+    const songData = {
+      ...req.body,
+      file_url: fileUrl, // Assign the file URL to the song data
+    };
+
+    const song = new Song(songData);
     await song.save();
     res.status(201).json(song);
   } catch (error) {

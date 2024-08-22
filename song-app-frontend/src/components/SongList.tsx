@@ -18,7 +18,7 @@ const Container = styled.div`
 
 const LeftHalf = styled.div`
   flex: 1;
-  background-image: url('https://t4.ftcdn.net/jpg/01/60/51/51/360_F_160515126_qv9J0UWorMlKiNhLpSuRss32ghVRLii1.jpg'); /* Replace with your image URL */
+  background-image: url('https://img.freepik.com/premium-photo/image-vintage-record-player-with-vinyl-records-music-generative-ai_635062-2817.jpg'); /* Replace with your image URL */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -38,6 +38,7 @@ const RightHalf = styled.div`
   background-color: #f5f5f5; /* Adjust the background color as needed */
   overflow-y: auto;
   padding: 20px;
+  margin-top: 20px;
 `;
 const SongList: React.FC<SongListProps> = ({ songs, onDelete, onUpdate }) => {
   

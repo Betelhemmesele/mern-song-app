@@ -19,7 +19,7 @@ import { Song } from '../../types/song';
 function* fetchSongs() {
   try {
     const response: AxiosResponse<Song[]> = yield call(axios.get, 'http://localhost:8000/api/songs');
-    console.log("eeeee")
+    console.log("eeeee",response.data)
     yield put(fetchSongsSuccess(response.data));
   } catch (error) {
     console.log("eee",error);
@@ -35,7 +35,12 @@ function* fetchSongs() {
 
 function* createSong(action: ReturnType<typeof createSongStart>) {
   try {
-    const response: AxiosResponse<Song> = yield call(axios.post, 'http://localhost:8000/api/songs', action.payload);
+    const response: AxiosResponse<Song> = yield call(axios.post, 'http://localhost:8000/api/songs', action.payload, {
+      headers: {
+        'Content-Type': 'multipart/form-data', // Set content type to multipart/form-data
+      },
+    });
+    console.log("response",response.data)
     yield put(createSongSuccess(response.data));
   } catch (error) {
     if (error instanceof AxiosError) {
