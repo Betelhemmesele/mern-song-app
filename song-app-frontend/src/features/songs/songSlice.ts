@@ -30,7 +30,19 @@ const songSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
-    createSongStart(state, action: PayloadAction<Omit<Song, '_id'>>) {
+    // createSongStart(state, action: PayloadAction<Omit<Song, '_id'>>) {
+    //   state.loading = true;
+    // },
+    // createSongSuccess(state, action: PayloadAction<Song>) {
+    //   state.songs.push(action.payload);
+    //   state.loading = false;
+    //   state.error = null;
+    // },
+    // createSongFailure(state, action: PayloadAction<string>) {
+    //   state.loading = false;
+    //   state.error = action.payload;
+    // },
+    createSongStart(state, action: PayloadAction<FormData>) {
       state.loading = true;
     },
     createSongSuccess(state, action: PayloadAction<Song>) {

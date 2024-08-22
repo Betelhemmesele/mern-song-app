@@ -4,5 +4,7 @@ export interface Song {
     artist: string;
     album: string;
     genre: string;
+    file: File | null;
+    file_url: string;
   }
   

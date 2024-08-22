@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const path = require("path");
 const app = express();
 const songRoutes = require('./routes/songRoutes');
 const cors = require('cors');
@@ -13,6 +14,7 @@ app.use(cors({
   origin: 'http://localhost:3000', // Replace with the actual origin of your frontend application
   credentials: true, // Allow credentials (cookies) to be sent in CORS requests
 }));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use("/api", songRoutes);
 app.use((err,req,res,next)=>{

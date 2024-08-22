@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 const NavbarContainer = styled.nav`
-  background-color: #333;
+  background-color: #3b1b1b;
   padding: 10px 20px;
   display: flex;
   justify-content: center; /* Aligns items to the right */
